@@ -14,8 +14,8 @@ const Login = () => {
 
         const token = response.data.token;
         localStorage.setItem("token", token);
-
         console.log("Log in succesful!", "Token:", response.data.token);
+        window.location.reload();
       } catch (error) {
         console.error("Login failed:", error.response?.data || error.message);
       }

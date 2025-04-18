@@ -1,8 +1,10 @@
+import React from 'react';
+
 const LogoutButton = () => {
     const handleLogout = () => {
       localStorage.removeItem("token");
       console.log("Logged out");
-      window.location.reload(); // Optional: triggers rerender
+      window.location.reload();
     };
   
     return (

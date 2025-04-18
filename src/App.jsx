@@ -1,7 +1,9 @@
-import { useState } from 'react'
 import Login from './components/Login'
 import Register from './components/Register'
 import JobPost from './components/JobPost'
+import LogoutButton from './components/LogoutButton'
+import JobList from './components/JobList'
+
 
 function App() {
   const token = localStorage.getItem("token");
@@ -9,16 +11,22 @@ function App() {
   return (
     <>
       <h2>Job seeker</h2>
-      <Login />
-      <Register />
-      <JobPost token={token}/>
-      <button onClick={() => {
-        localStorage.removeItem("token")
-        //window.location.reload()
-        console.log("Logged out")
-      }}>
-        Log out
-      </button>
+
+      {!token && (
+        <>
+          <Login />
+          <Register />
+        </>
+      )}
+      
+      {token && (
+        <>
+          <JobPost token={token} />
+          <LogoutButton />
+        </>
+      )}
+      <JobList />
+      
     </>
   )
 }
