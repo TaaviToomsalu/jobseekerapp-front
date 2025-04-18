@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setToken }) => {
     const [email, setEmail] = useState("seeker@test.com");
     const [password, setPassword] = useState("test1234");
   
@@ -14,8 +14,9 @@ const Login = () => {
 
         const token = response.data.token;
         localStorage.setItem("token", token);
+        setToken(token);
+
         console.log("Log in succesful!", "Token:", response.data.token);
-        window.location.reload();
       } catch (error) {
         console.error("Login failed:", error.response?.data || error.message);
       }

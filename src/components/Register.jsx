@@ -1,10 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from "axios";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("JOB_SEEKER");
+  const [role, setRole] = useState("");
 
   const handleRegister = async () => {
     try {
@@ -14,6 +16,7 @@ const Register = () => {
         role,
       });
       console.log("Registered! Token:", response.data.token);
+      navigate("/login");
       // You could store token or redirect here
     } catch (error) {
       console.error("Registration failed:", error.response?.data || error.message);

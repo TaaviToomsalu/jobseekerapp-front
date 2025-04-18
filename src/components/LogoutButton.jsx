@@ -1,10 +1,14 @@
+//import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
-const LogoutButton = () => {
+const LogoutButton = ({ setToken }) => {
+    //const navigate = useNavigate();
+
     const handleLogout = () => {
       localStorage.removeItem("token");
       console.log("Logged out");
-      window.location.reload();
+      setToken(null)
+      
     };
   
     return (
