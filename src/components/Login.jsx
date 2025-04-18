@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Login = () => {
     const [email, setEmail] = useState("seeker@test.com");
-    const [password, setPassword] = useState("password123");
+    const [password, setPassword] = useState("test1234");
   
     const handleLogin = async () => {
       try {
@@ -11,6 +11,10 @@ const Login = () => {
           email,
           password,
         });
+
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+
         console.log("Log in succesful!", "Token:", response.data.token);
       } catch (error) {
         console.error("Login failed:", error.response?.data || error.message);
